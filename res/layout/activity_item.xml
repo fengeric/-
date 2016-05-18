@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/show_item_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showItemDetail"
+        android:text="@string/show_item_detail" />
+
+    <Button
+        android:id="@+id/open_taoke_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openTaokeDetail"
+        android:text="@string/open_taoke_detail" />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/type"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/tao"            
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:checked="true"
+            android:layout_weight="1"
+            android:text="淘宝" >
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/tian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dip"
+            android:layout_weight="1"
+            android:text="天猫" >
+        </RadioButton>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/itemInputData"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="itemID,itemType,pid 不填为默认值" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/showPromotions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showPromotions"
+        android:text="@string/open_promotions" />
+
+    <Button
+        android:id="@+id/showETicketDetail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showETicketDetail"
+        android:text="@string/open_eticket" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#ff212323"
+        android:padding="4dp" >
+
+        <TextView
+            android:id="@+id/text_showItemDetailV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:text="商品ID(不混淆):"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <AutoCompleteTextView
+            android:id="@+id/itemInputData2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:completionThreshold="1"
+            android:ems="10"
+            android:hint="itemID" >
+        </AutoCompleteTextView>
+
+        <Button
+            android:id="@+id/showItemDetailV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/itemInputData2"
+            android:onClick="showItemDetailV2"
+            android:text="商品详情" />
+
+        <Button
+            android:id="@+id/showTaokeItemDetailV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemInputData2"
+            android:layout_toEndOf="@+id/showItemDetailV2"
+            android:layout_toRightOf="@+id/showItemDetailV2"
+            android:onClick="showTaokeItemDetailV2"
+            android:text="淘客商品详情" />
+        <Button
+            android:id="@+id/GlobalItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showItemDetailV2"           
+            android:onClick="showGlobalItem"
+            android:text="海外淘客商品详情" />
+    </RelativeLayout>
+
+    
+
+</LinearLayout>
