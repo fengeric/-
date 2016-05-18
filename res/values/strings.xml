@@ -49,11 +49,6 @@
     <string name="opIMUI">OpenIMUI DEMO</string>
     <string name="opIMSDK">OpenIMSDK DEMO</string>
     <string name="opPic">上传图片</string>
-    <string name="tae_sdk_login_qr_icon_taobao">&#xe6e9;</string>
-    <string name="tae_sdk_login_qr_icon_close">&#xe645;</string>
-    <string name="tae_sdk_qr_login_icon_scan">&#xe60a;</string>
-    <string name="tae_sdk_qr_login_icon_password">&#xe635;</string>
-    <string name="com_taobao_tae_sdk_qr_login_title_bar_text">淘宝账号登录</string>
     <string name="opOpenAccount">OpenAccount</string>
     <string name="opOpenTrade">OpenTrade</string>
     <string name="createOrder">创建订单</string>

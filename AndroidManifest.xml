@@ -42,6 +42,7 @@
         </activity>
         <activity android:name="com.alibaba.sdk.android.webview.feedback.SendFeedbackActivity" >
         </activity>
+        <activity android:name="com.okkuaixiu.oklivehome.LoginAuthWithTaoBaoActivity" />
 
         <receiver
             android:name="com.alibaba.sdk.android.hotpatch.HotPatchBroadcastReceiver"

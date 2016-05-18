@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.util.regex.Pattern;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -72,6 +73,12 @@ public class MainActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
+	}
+	
+	public void loginWithTaoBao(View v){
+		Intent in = new Intent();
+		in.setClass(MainActivity.this, LoginAuthWithTaoBaoActivity.class);
+		startActivity(in);
 	}
 	
 	public void showItemDetail(View view) {
