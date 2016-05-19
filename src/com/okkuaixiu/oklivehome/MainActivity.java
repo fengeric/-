@@ -1,14 +1,10 @@
 package com.okkuaixiu.oklivehome;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -19,11 +15,14 @@ import android.widget.Toast;
 
 import com.alibaba.sdk.android.AlibabaSDK;
 import com.alibaba.sdk.android.ResultCode;
+import com.alibaba.sdk.android.callback.InitResultCallback;
 import com.alibaba.sdk.android.trade.ItemService;
 import com.alibaba.sdk.android.trade.PromotionService;
+import com.alibaba.sdk.android.trade.TradeService;
 import com.alibaba.sdk.android.trade.callback.TradeProcessCallback;
 import com.alibaba.sdk.android.trade.model.TaokeParams;
 import com.alibaba.sdk.android.trade.model.TradeResult;
+import com.alibaba.sdk.android.trade.page.ItemDetailPage;
 import com.alibaba.sdk.android.webview.UiSettings;
 import com.ta.utdid2.android.utils.StringUtils;
 
@@ -61,6 +60,20 @@ public class MainActivity extends Activity {
 		// 启用监听器
 		actv.setAdapter(adapter);
 		actv.setText(itemIds[0]);
+		
+		AlibabaSDK.asyncInit(this, new InitResultCallback() {
+			@Override
+			public void onSuccess() {
+				Toast.makeText(MainActivity.this, "初始化成功",
+						Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void onFailure(int code, String message) {
+				Toast.makeText(MainActivity.this, "初始化异常",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	@Override
@@ -73,6 +86,29 @@ public class MainActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
+	}
+	
+	public void openTaoKeTest(View v){
+		String input = textView.getText().toString();
+		TradeService tradeService = AlibabaSDK.getService(TradeService.class);
+	    ItemDetailPage itemDetailPage = new ItemDetailPage(input, null);
+	    TaokeParams taokeParams = new TaokeParams(); //若非淘客taokeParams设置为null即可
+	    taokeParams.pid = "mm_115753402_0_0";
+	    tradeService.show(itemDetailPage, null, MainActivity.this, null, new TradeProcessCallback(){
+	 
+	        @Override
+	        public void onFailure(int code, String msg) {
+	            Toast.makeText(MainActivity.this, "失败 "+code+msg,
+	                    Toast.LENGTH_SHORT).show();
+	             
+	        }
+	 
+	        @Override
+	        public void onPaySuccess(TradeResult tradeResult) {
+	            Toast.makeText(MainActivity.this, "成功", Toast.LENGTH_SHORT)
+	                    .show();
+	             
+	        }});
 	}
 	
 	public void loginWithTaoBao(View v){
@@ -240,7 +276,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void showTaokeItemDetailV2(View view) {
-		String inputData = "22429824161";// actv.getText().toString();
+		String inputData = actv.getText().toString();
 		TaokeParams taokeParams = new TaokeParams();
 		taokeParams.pid = "mm_115753402_0_0";
 		AlibabaSDK.getService(ItemService.class).showTaokeItemDetailByItemId(this, new TradeProcessCallback() {
